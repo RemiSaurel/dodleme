@@ -1,0 +1,12 @@
+#title {
+  margin-top: 15vh;
+  font-weight: bolder;
+  font-size: 38px;
+}
+
+#datepickerImage {
+  float: right;
+  top: 15vh;
+  margin-bottom: 0;
+  width: 480px;
+}
