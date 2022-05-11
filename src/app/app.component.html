@@ -1,16 +1,21 @@
 <div class="main">
-  <div class="h2" id="title">
-    DodleMe
-  </div>
-  <div id="description">
-    <span>Planifiez vos évènements</span>
-    <span>et organisez vos prochains</span>
-    <span>rendez-vous.</span>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary" id="create_dodle">Créer un DodleMe</button>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary">Voir tous les événements</button>
+  <div class="row">
+    <div class="col-3">
+      <div class="h2" id="title">
+        DodleMe
+      </div>
+      <div id="description">
+        <span>Planifiez vos évènements</span>
+        <span>et organisez vos prochains</span>
+        <span>rendez-vous.</span>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" id="create_dodle" routerLink="create">Créer un DodleMe</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" routerLink="events">Voir tous les événements</button>
+      </div>
+    </div>
+    <div class="col-9"><router-outlet></router-outlet></div>
   </div>
 </div>
