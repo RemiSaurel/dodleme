@@ -2,6 +2,21 @@
   margin-top: 15vh;
   font-weight: bolder;
   font-size: 38px;
+  margin-bottom: 5vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+#description {
+  margin-bottom: 5vh;
+}
+
+#description span {
+  display: flex;
+  flex-direction: column;
 }
 
 #datepickerImage {
@@ -9,4 +24,8 @@
   top: 15vh;
   margin-bottom: 0;
   width: 480px;
+}
+
+#create_dodle {
+  margin-bottom: 5vh;
 }
