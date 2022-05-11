@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   {path: 'create', component: CreerEvenementComponent},
   {path: 'events', component: ListerEvenementsComponent}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
