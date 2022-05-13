@@ -1,5 +1,5 @@
 #title {
-  margin-top: 15vh;
+  margin-top: 5vh;
   font-weight: bolder;
   font-size: 38px;
   margin-bottom: 5vh;
@@ -28,4 +28,8 @@
 
 #create_dodle {
   margin-bottom: 5vh;
+}
+
+#component {
+  margin-top: 5vh;
 }

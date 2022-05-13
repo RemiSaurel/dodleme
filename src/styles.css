@@ -4,3 +4,15 @@
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
 }
+
+a {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
