@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CreerEvenementComponent } from './creer-evenement/creer-evenement.component';
 import { ListerEvenementsComponent } from './lister-evenements/lister-evenements.component';
 import {FormsModule} from "@angular/forms";
+import {ApiDodleMe} from "./api-dodleme";
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   // 1 route par module
@@ -22,9 +24,10 @@ const appRoutes: Routes = [
     imports: [
         BrowserModule,
         RouterModule.forRoot(appRoutes),
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [ApiDodleMe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

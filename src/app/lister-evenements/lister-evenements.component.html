@@ -1,1 +1,16 @@
-<p>lister-evenements works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="col">#</th>
+    <th class="col">Titre</th>
+    <th class="col">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of this.evenements; index as i">
+    <td>{{ i }}</td>
+    <td>{{ event.titre }}</td>
+    <td>{{ event.description }}</td>
+  </tr>
+  </tbody>
+</table>

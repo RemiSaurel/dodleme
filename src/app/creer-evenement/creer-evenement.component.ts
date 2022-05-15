@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Evenement} from "../Evenement";
+import {ApiDodleMe} from "../api-dodleme";
 
 @Component({
   selector: 'app-creer-evenement',
@@ -8,7 +9,11 @@ import {Evenement} from "../Evenement";
 })
 export class CreerEvenementComponent implements OnInit {
   evenement: Evenement;
-  constructor() { }
+  constructor(private apiDodleMe: ApiDodleMe ) { }
+
+  valider(){
+    this.apiDodleMe.ajouterEvent(this.evenement)
+  }
 
   ngOnInit(): void {
     this.evenement = new Evenement();
