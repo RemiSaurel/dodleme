@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreerEvenementComponent } from './creer-evenement/creer-evenement.component';
 import { ListerEvenementsComponent } from './lister-evenements/lister-evenements.component';
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   // 1 route par module
@@ -18,10 +19,11 @@ const appRoutes: Routes = [
     CreerEvenementComponent,
     ListerEvenementsComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes),
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
