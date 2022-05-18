@@ -12,6 +12,8 @@ export class ListerEvenementsComponent implements OnInit {
   constructor(private apiDodleMe: ApiDodleMe) { }
 
   ngOnInit(): void {
-    this.apiDodleMe.recupererListe().subscribe((data) => {this.evenements = data});
+    this.apiDodleMe.recupererListe().subscribe((data) => {
+      this.evenements = data;
+    });
   }
 }

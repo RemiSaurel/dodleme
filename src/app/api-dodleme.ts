@@ -8,11 +8,11 @@ import {Evenement} from "./Evenement";
 })
 
 export class ApiDodleMe {
-  private url = "http://localhost:3000/api/events"
+  private url = "http://localhost:3000/api/events" // TODO : CHANGER URL POUR BACK SI BESOIN
   constructor(private httpClient: HttpClient) {
   }
 
-  public recupererListe() : Observable<Evenement[]> {
+  public recupererListe() : Observable<Evenement[]>{
     return this.httpClient.get<Evenement[]>(this.url);
   }
 
