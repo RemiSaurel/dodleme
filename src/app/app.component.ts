@@ -10,6 +10,8 @@ import { UserLoginComponent } from "./user-login/user-login.component";
 export class AppComponent {
   title = 'dodleme';
   userLogin = new UserLoginComponent();
+  isLogged: boolean = true; // default FALSE
+
   constructor() {
 }
 

@@ -8,16 +8,17 @@ import {Evenement} from "./Evenement";
 })
 
 export class ApiDodleMe {
-  private url = "http://localhost:3000/api/events" // TODO : CHANGER URL POUR BACK SI BESOIN
+  private url = "http://localhost:3000/api/"; // TODO : CHANGER URL POUR BACK SI BESOIN
+
   constructor(private httpClient: HttpClient) {
   }
 
   public recupererListe() : Observable<Evenement[]>{
-    return this.httpClient.get<Evenement[]>(this.url);
+    return this.httpClient.get<Evenement[]>(this.url + "events");
   }
 
   public ajouterEvent(event: Evenement) {
-    // console.log(event)
-    this.httpClient.post<Evenement>(this.url, event);
+    this.httpClient.post<Evenement>(this.url + "create", event)
+      .subscribe(data => console.log(data));
   }
 }

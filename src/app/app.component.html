@@ -1,6 +1,5 @@
 <header class="h4 m-3" id="header">
   <a href="/">DodleMe</a>
-  <div><button class="btn btn-dark rounded" routerLink="login" >Se connecter</button></div>
 </header>
 <hr>
 <div class="container">
@@ -16,10 +15,10 @@
           <span>rendez-vous.</span>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" id="create_dodle" routerLink="create">Créer un DodleMe</button>
+          <button type="button" class="btn btn-primary" id="create_dodle" routerLink="create" *ngIf="isLogged">Créer un DodleMe</button>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" routerLink="events" >Voir tous les événements</button>
+          <button type="button" class="btn btn-primary" routerLink="events" *ngIf="isLogged">Voir tous les événements</button>
         </div>
       </div>
       <div class="col-9" id="component"><router-outlet></router-outlet></div>
