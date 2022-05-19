@@ -8,24 +8,29 @@ import { ListerEvenementsComponent } from './lister-evenements/lister-evenements
 import {FormsModule} from "@angular/forms";
 import {ApiDodleMe} from "./api-dodleme";
 import { HttpClientModule } from '@angular/common/http';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 const appRoutes: Routes = [
   // 1 route par module
   {path: 'create', component: CreerEvenementComponent},
-  {path: 'events', component: ListerEvenementsComponent}
+  {path: 'events', component: ListerEvenementsComponent},
+  {path: 'login', component: UserLoginComponent },
+  // Spécifie le chemin d'erreur et le chemin par défaut
+  {path: '**' , redirectTo:"/login",pathMatch:'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     CreerEvenementComponent,
-    ListerEvenementsComponent
+    ListerEvenementsComponent,
+    UserLoginComponent
   ],
     imports: [
         BrowserModule,
         RouterModule.forRoot(appRoutes),
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
     ],
   providers: [ApiDodleMe],
   bootstrap: [AppComponent]
