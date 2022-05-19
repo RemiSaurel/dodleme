@@ -12,6 +12,20 @@ export class UserLoginComponent implements OnInit {
 
   constructor() { this.user = new User() }
 
+  afficherInscription() {
+    let connexion = document.getElementById("connexion");
+    connexion?.classList.add("d-none");
+    let inscription = document.getElementById("inscription");
+    inscription?.classList.remove("d-none");
+  }
+
+  afficherConnexion() {
+    let connexion = document.getElementById("connexion");
+    connexion?.classList.remove("d-none");
+    let inscription = document.getElementById("inscription");
+    inscription?.classList.add("d-none");
+  }
+
   ngOnInit(): void {
   }
 

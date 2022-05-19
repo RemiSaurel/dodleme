@@ -1,11 +1,11 @@
 <h2> Bienvenue sur DodleMe !</h2>
-<h3> Merci de vous connecter/inscrire pour accéder vos outils</h3>
+<h3> Merci de vous connecter/inscrire pour accéder aux outils</h3>
 <br>
 <div class="row">
-  <div class="col-sm-6">
-    <h3>Connection</h3>
+  <div class="col-sm-6" id="connexion">
+    <h3>Connexion</h3>
     <div class="form-group">
-      <label for="Username" class="col-form-label">Pseudonyme</label>
+      <label for="Username" class="col-form-label">Nom d'utilisateur</label>
       <div>
         <input type="text" class="form-control w-50" id="Username" [(ngModel)] = "user.username">
       </div>
@@ -16,12 +16,16 @@
     </div>
     <br>
     <button class="btn btn-primary" (click)="connection()">Valider</button>
+    <div class="mb-2 mt-3">Pas encore de compte ?
+      <button class="btn btn-dark rounded-1" (click)="afficherInscription()">S'inscrire</button>
+    </div>
+
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 d-none" id="inscription">
 
     <h3>Inscription</h3>
     <div class="form-group">
-      <label for="Username" class="col-form-label">Pseudonyme</label>
+      <label for="Username" class="col-form-label">Nom d'utilisateur</label>
       <div>
         <input type="text" class="form-control w-50" id="Username" [(ngModel)] = "user.username">
       </div>
@@ -46,5 +50,8 @@
     </div>
     <br>
     <button class="btn btn-primary" (click)="inscription()">Valider</button>
+    <div class="mb-2 mt-3">J'ai déjà un compte ?
+      <button class="btn btn-dark rounded-1" (click)="afficherConnexion()">Se connecter</button>
+    </div>
   </div>
 </div>
