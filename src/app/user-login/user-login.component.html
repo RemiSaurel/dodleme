@@ -1,0 +1,50 @@
+<h2> Bienvenue sur DodleMe !</h2>
+<h3> Merci de vous connecter/inscrire pour accéder vos outils</h3>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Connection</h3>
+    <div class="form-group">
+      <label for="Username" class="col-form-label">Pseudonyme</label>
+      <div>
+        <input type="text" class="form-control w-50" id="Username" [(ngModel)] = "user.username">
+      </div>
+      <label for="Pwd" class=" col-form-label">Mot de passe</label>
+      <div>
+        <input type="password" class="form-control w-50" id="Pwd" [(ngModel)]= "user.passwd">
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="connection()">Valider</button>
+  </div>
+  <div class="col-sm-6">
+
+    <h3>Inscription</h3>
+    <div class="form-group">
+      <label for="Username" class="col-form-label">Pseudonyme</label>
+      <div>
+        <input type="text" class="form-control w-50" id="Username" [(ngModel)] = "user.username">
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="FName" class="col-form-label">Prénom</label>
+          <input type="text" class="form-control w-50" id="FName" [(ngModel)] = "user.fname">
+        </div>
+        <div class="col-sm-6">
+          <label for="LName" class="col-form-label">Nom</label>
+          <input type="text" class="form-control w-50" id="LName" [(ngModel)] = "user.lname">
+        </div>
+      </div>
+      <label for="Pwd" class=" col-form-label">Mot de passe</label>
+      <div>
+        <input type="password" class="form-control w-50" id="Pwd" [(ngModel)]= "user.passwd">
+      </div>
+      <label for="Pwd" class=" col-form-label">Confirmation du mot de passe</label>
+      <div>
+        <input type="password" class="form-control w-50" id="ConfirmPwd" [(ngModel)]= "user.passwd">
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="inscription()">Valider</button>
+  </div>
+</div>
