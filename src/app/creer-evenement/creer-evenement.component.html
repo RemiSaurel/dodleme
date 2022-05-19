@@ -2,6 +2,9 @@
   <label for="Titre" class="col-form-label">Titre</label>
   <div>
     <input type="text" class="form-control w-50" id="Titre" [(ngModel)] = "evenement.titre">
+    <div class="alert alert-danger d-none w-50" role="alert" id="error_titre">
+      Veuillez choisir un titre.
+    </div>
   </div>
 </div>
 <div class="form-group mt-2 mb-2">
@@ -11,6 +14,6 @@
   </div>
 </div>
 <button class="btn btn-primary" (click)="valider()">Valider</button>
-<br>
-TEST :
-<pre>{{ evenement | json}}</pre>
+<div class="alert alert-success mt-2 d-none w-25" role="alert" id="event_ok">
+  Événement créé !
+</div>
