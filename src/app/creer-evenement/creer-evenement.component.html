@@ -13,7 +13,12 @@
     <textarea  class="form-control w-75" id="Description" [(ngModel)] = "evenement.description"> </textarea>
   </div>
 </div>
-<button class="btn btn-primary" (click)="valider()">Valider</button>
+<div class="form-group mt-2 mb-2">
+  <button class="btn btn-primary"> <!-- TODO : ajouter html et datetime picker -->
+    <fa-icon [icon]="faPlus"></fa-icon> Ajouter un créneau
+  </button>
+</div>
+<button class="btn btn-success" (click)="valider()">Valider</button>
 <div class="alert alert-success mt-2 d-none w-25" role="alert" id="event_ok">
   Événement créé !
 </div>

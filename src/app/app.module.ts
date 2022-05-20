@@ -10,6 +10,8 @@ import {ApiDodleMe} from "./api-dodleme";
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginComponent } from './user-login/user-login.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 const appRoutes: Routes = [
   // 1 route par module
   {path: 'create', component: CreerEvenementComponent},
@@ -26,12 +28,13 @@ const appRoutes: Routes = [
     ListerEvenementsComponent,
     UserLoginComponent
   ],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(appRoutes),
-        FormsModule,
-        HttpClientModule,
-    ],
+  imports: [
+      BrowserModule,
+      RouterModule.forRoot(appRoutes),
+      FormsModule,
+      HttpClientModule,
+      FontAwesomeModule
+  ],
   providers: [ApiDodleMe],
   bootstrap: [AppComponent]
 })

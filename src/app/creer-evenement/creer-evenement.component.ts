@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Evenement} from "../Evenement";
 import {ApiDodleMe} from "../api-dodleme";
 import {HttpClient} from "@angular/common/http";
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-creer-evenement',
@@ -9,6 +10,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./creer-evenement.component.css']
 })
 export class CreerEvenementComponent implements OnInit {
+  faPlus = faPlus;
   evenement: Evenement;
 
   constructor(private apiDodleMe: ApiDodleMe,
@@ -20,7 +22,7 @@ export class CreerEvenementComponent implements OnInit {
 
   eventOk(): boolean {
     return  this.evenement.titre !== undefined
-      && this.evenement.titre !== "";
+      && this.evenement.titre.trim() !== "";
   }
 
   clearInputs() {
