@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { UserLoginComponent } from "./user-login/user-login.component";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dodleme';
+  userLogin = new UserLoginComponent();
+  isLogged: boolean = true; // default FALSE
+
+  constructor() {
+}
+
+  userConnection() {
+
+  }
 }

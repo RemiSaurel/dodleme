@@ -1,21 +1,27 @@
-<div class="main">
-  <div class="row">
-    <div class="col-3">
-      <div class="h2" id="title">
-        DodleMe
+<header class="h4 m-3" id="header">
+  <a href="/">DodleMe</a>
+</header>
+<hr>
+<div class="container">
+  <div class="main">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="h2" id="title">
+          DodleMe
+        </div>
+        <div id="description">
+          <span>Planifiez vos évènements</span>
+          <span>et organisez vos prochains</span>
+          <span>rendez-vous.</span>
+        </div>
+        <div>
+          <button type="button" class="btn btn-dark" id="create_dodle" routerLink="create" *ngIf="isLogged">Créer un DodleMe</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-dark" routerLink="events" *ngIf="isLogged">Voir tous les événements</button>
+        </div>
       </div>
-      <div id="description">
-        <span>Planifiez vos évènements</span>
-        <span>et organisez vos prochains</span>
-        <span>rendez-vous.</span>
-      </div>
-      <div>
-        <button type="button" class="btn btn-primary" id="create_dodle" routerLink="create">Créer un DodleMe</button>
-      </div>
-      <div>
-        <button type="button" class="btn btn-primary" routerLink="events">Voir tous les événements</button>
-      </div>
+      <div class="col-md-9" id="component"><router-outlet></router-outlet></div>
     </div>
-    <div class="col-9" id="component"><router-outlet></router-outlet></div>
   </div>
 </div>

@@ -1,1 +1,33 @@
-<p>creer-evenement works!</p>
+<div class="form-group">
+  <label for="Titre" class="col-form-label sous-titre">Titre</label>
+  <div>
+    <input type="text" class="form-control w-50" id="Titre" [(ngModel)] = "evenement.titre">
+    <div class="alert alert-danger d-none w-50" role="alert" id="error_titre">
+      Veuillez choisir un titre.
+    </div>
+  </div>
+</div>
+<div class="form-group mt-2 mb-2">
+  <label for="Description" class=" col-form-label sous-titre">Description</label>
+  <div>
+    <textarea  class="form-control w-75" id="Description" [(ngModel)] = "evenement.description"> </textarea>
+  </div>
+</div>
+<div class="form-group mt-2 mb-2">
+  <label for="Creneau" class=" col-form-label sous-titre">Creneau</label>
+  <div id="Creneau">
+    <div class="date_titre">Date début</div> <input type="date" id="creneau_date_debut" [(ngModel)] = "creneau.date_debut">
+    <input type="time" id="creneau_heure_debut" [(ngModel)] = "creneau.heure_debut">
+    <br>
+    <div class="date_titre">Date fin</div>  <input type="date" id="creneau_date_fin" [(ngModel)] = "creneau.date_fin">
+    <input type="time" id="creneau_heure_fin" [(ngModel)] = "creneau.heure_fin">
+  </div>
+  <button class="btn btn-primary mt-1"> <!-- TODO : ajouter html et datetime picker -->
+    <fa-icon [icon]="faPlus"></fa-icon> Ajouter un autre créneau
+  </button>
+</div>
+<hr>
+<button class="btn btn-success" (click)="valider()">Valider</button>
+<div class="alert alert-success mt-2 d-none w-25" role="alert" id="event_ok">
+  Événement créé !
+</div>
