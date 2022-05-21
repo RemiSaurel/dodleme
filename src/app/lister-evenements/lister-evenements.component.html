@@ -4,6 +4,7 @@
     <th class="col">#</th>
     <th class="col">Titre</th>
     <th class="col">Description</th>
+    <th class="col">Créneaux</th>
   </tr>
   </thead>
   <tbody>
@@ -11,6 +12,17 @@
     <td>{{ i }}</td>
     <td>{{ event.titre }}</td>
     <td>{{ event.description }}</td>
+    <td *ngFor="let info of event.creneaux">
+      Date début : {{ info.date_debut }} <br>
+      Heure début : {{ info.heure_debut }} <br>
+      Date fin : {{ info.date_fin }} <br>
+      Heure fin : {{ info.heure_fin }} <br>
+      <button class="btn btn-success" >Participer</button>
+      <button class="btn btn-warning" >Peut-être</button>
+      <hr>
+    </td>
+    <td>
+    </td>
   </tr>
   </tbody>
 </table>

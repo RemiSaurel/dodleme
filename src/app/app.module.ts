@@ -29,11 +29,11 @@ const appRoutes: Routes = [
     UserLoginComponent
   ],
   imports: [
-      BrowserModule,
-      RouterModule.forRoot(appRoutes),
-      FormsModule,
-      HttpClientModule,
-      FontAwesomeModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [ApiDodleMe],
   bootstrap: [AppComponent]
