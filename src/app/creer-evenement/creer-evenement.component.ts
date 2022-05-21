@@ -37,6 +37,7 @@ export class CreerEvenementComponent implements OnInit {
     if (this.eventOk()) {
       this.evenement.creneaux.push(this.creneau)
       this.apiDodleMe.ajouterEvent(this.evenement)
+      console.log(this.evenement)
       this.clearInputs();
       document.getElementById("error_titre")?.classList.add("d-none");
       document.getElementById("event_ok")?.classList.remove("d-none");

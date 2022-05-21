@@ -11,9 +11,16 @@ export class ListerEvenementsComponent implements OnInit {
   evenements: Evenement[];
   constructor(private apiDodleMe: ApiDodleMe) { }
 
+  clearAllEvents() {
+    this.apiDodleMe.clearAllEvents();
+    location.reload();
+  }
+
   ngOnInit(): void {
     this.apiDodleMe.recupererListe().subscribe((data) => {
-      this.evenements = data;
+      if (data) {
+        this.evenements = data;
+      }
     });
   }
 }

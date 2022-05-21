@@ -21,4 +21,9 @@ export class ApiDodleMe {
     this.httpClient.post<Evenement>(this.url + "create", event)
       .subscribe(data => console.log(data));
   }
+
+  public clearAllEvents() {
+    this.httpClient.delete(this.url + "events")
+      .subscribe(data => console.log(data));
+  }
 }
