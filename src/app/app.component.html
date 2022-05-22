@@ -1,11 +1,12 @@
 <header class="h4 m-3" id="header">
-  <a href="/">DodleMe</a>
+  <div routerLink="/" id="titre_header">DodleMe</div>
+  <button type="button" class="btn btn-dark" routerLink="profile" *ngIf="isLogged">Mon profil</button>
 </header>
 <hr>
 <div class="container">
   <div class="main">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 col-12">
         <div class="h2" id="title">
           DodleMe
         </div>
@@ -21,7 +22,7 @@
           <button type="button" class="btn btn-dark" routerLink="events" *ngIf="isLogged">Voir tous les événements</button>
         </div>
       </div>
-      <div class="col-md-9" id="component"><router-outlet></router-outlet></div>
+      <div class="col-md-9 col-sm-12" id="component"><router-outlet></router-outlet></div>
     </div>
   </div>
 </div>

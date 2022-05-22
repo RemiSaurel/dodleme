@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { User } from "../User";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'user-login',
@@ -10,30 +11,37 @@ export class UserLoginComponent implements OnInit {
 
   user: User;
 
-  constructor() { this.user = new User() }
+  erreurLogin: boolean = false;
+  erreurSignUp: boolean = false;
+
+  inscriptionForm: boolean = false;
+
+  constructor(private appComponent: AppComponent) {
+    this.user = new User()
+  }
 
   afficherInscription() {
-    let connexion = document.getElementById("connexion");
-    connexion?.classList.add("d-none");
-    let inscription = document.getElementById("inscription");
-    inscription?.classList.remove("d-none");
+    this.inscriptionForm = true;
   }
 
   afficherConnexion() {
-    let connexion = document.getElementById("connexion");
-    connexion?.classList.remove("d-none");
-    let inscription = document.getElementById("inscription");
-    inscription?.classList.add("d-none");
+    this.inscriptionForm = false;
   }
 
   ngOnInit(): void {
   }
 
   connection() {
-    console.log("FAIRE UN CALL API POUR VERIFIER SI USER EXISTE, SI EXISTE ALORS CONNEXION, SINON ERREUR")
+    this.erreurSignUp = false;
+    if (!this.appComponent.connexion(this.user)) {
+      this.erreurLogin = true;
+    };
   }
 
   inscription() {
-    console.log("FAIRE UN CALL API POUR VERIFIER SI USER EXISTE PAS , SI EXISTE ALORS MESSAGE, SINON CREATION COMPTE")
+    this.erreurLogin = false;
+    if (!this.appComponent.inscription(this.user)) {
+      this.erreurSignUp = true;
+    };
   }
 }

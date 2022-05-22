@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Evenement} from "../Evenement";
 import {ApiDodleMe} from "../api-dodleme";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-lister-evenements',
@@ -9,11 +10,12 @@ import {ApiDodleMe} from "../api-dodleme";
 })
 export class ListerEvenementsComponent implements OnInit {
   evenements: Evenement[];
-  constructor(private apiDodleMe: ApiDodleMe) { }
+  constructor(private apiDodleMe: ApiDodleMe,
+              private router: Router) { }
 
   clearAllEvents() {
     this.apiDodleMe.clearAllEvents();
-    location.reload();
+    this.evenements = [];
   }
 
   ngOnInit(): void {

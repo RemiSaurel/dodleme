@@ -1,15 +1,15 @@
-
 <div class="row mt-5">
-  <div class="col-sm-6 offset-3" id="connexion">
+  <div class="col-sm-9 offset-3 alert alert-danger w-50" role="alert" id="error_form" *ngIf="erreurSignUp||erreurLogin">
+    Erreur : votre username est
+    <div *ngIf="erreurLogin"> inconnu de nos services.</div>
+    <div *ngIf="erreurSignUp"> indisponible car déjà utilisé.</div>
+  </div>
+  <div class="col-sm-9 offset-3" id="connexion" *ngIf="!inscriptionForm">
     <h3>Connexion</h3>
     <div class="form-group">
       <label for="Username" class="col-form-label">Nom d'utilisateur</label>
       <div>
         <input type="text" class="form-control w-50" id="Username" [(ngModel)] = "user.username">
-      </div>
-      <label for="Pwd" class=" col-form-label">Mot de passe</label>
-      <div>
-        <input type="password" class="form-control w-50" id="Pwd" [(ngModel)]= "user.password">
       </div>
     </div>
     <br>
@@ -17,10 +17,9 @@
     <div class="mb-2 mt-3">Pas encore de compte ?
       <button class="btn btn-dark rounded-1" (click)="afficherInscription()">S'inscrire</button>
     </div>
-
   </div>
-  <div class="col-sm-6 offset-3 d-none" id="inscription">
 
+  <div class="col-sm-9 offset-3" id="inscription" *ngIf="inscriptionForm">
     <h3>Inscription</h3>
     <div class="form-group">
       <label for="Username" class="col-form-label">Nom d'utilisateur</label>
@@ -38,10 +37,6 @@
           <label for="FName" class="col-form-label">Prénom</label>
           <input type="text" class="form-control" id="FName" [(ngModel)] = "user.prenom">
         </div>
-      </div>
-      <label for="Pwd" class=" col-form-label">Mot de passe</label>
-      <div>
-        <input type="password" class="form-control w-50" id="Pwd" [(ngModel)]= "user.password">
       </div>
     </div>
     <br>

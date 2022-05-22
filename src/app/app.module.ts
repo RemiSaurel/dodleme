@@ -11,14 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserLoginComponent } from './user-login/user-login.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   // 1 route par module
   {path: 'create', component: CreerEvenementComponent},
   {path: 'events', component: ListerEvenementsComponent},
   {path: 'login', component: UserLoginComponent },
+  {path: 'profile', component: UserProfileComponent },
   // Spécifie le chemin d'erreur et le chemin par défaut
-  {path: '**' , redirectTo:"/login",pathMatch:'full' }
+  {path: '**', redirectTo:"/login" ,pathMatch:'full' }
 ];
 
 @NgModule({
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     CreerEvenementComponent,
     ListerEvenementsComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-
-import { UserLoginComponent } from "./user-login/user-login.component";
+import {Component} from '@angular/core';
+import {ApiDodleMe} from "./api-dodleme";
+import {User} from "./User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,41 @@ import { UserLoginComponent } from "./user-login/user-login.component";
 })
 export class AppComponent {
   title = 'dodleme';
-  userLogin = new UserLoginComponent();
-  isLogged: boolean = true; // default FALSE
+  isLogged : boolean = false;
+  user: User;
 
-  constructor() {
-}
+  constructor(private apiDodleMe: ApiDodleMe,
+              private router: Router) {
+    this.user = new User();
+  }
 
-  userConnection() {
+  getUser() : User {
+    return this.user;
+  }
 
+  checkLogin(user: User, data: User) : boolean {
+    if (user.username === data.username){
+      this.isLogged = true;
+      this.router.navigate(['/events'])
+      this.user = data;
+      return true;
+    } else {
+      this.isLogged = false;
+      return false;
+    }
+  }
+
+  connexion(user: User) : boolean {
+    this.apiDodleMe.connexionUtilisateur(user).subscribe(data => {
+      return this.checkLogin(user, data);
+    });
+    return false;
+  }
+
+  inscription(user: User) : boolean {
+    this.apiDodleMe.inscriptionUtilisateur(user).subscribe( data => {
+      return this.checkLogin(user, data);
+    });
+    return false;
   }
 }

@@ -33,3 +33,7 @@
 #component {
   margin-top: 5vh;
 }
+
+#titre_header {
+  cursor: pointer;
+}
