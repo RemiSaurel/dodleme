@@ -14,8 +14,12 @@ export class ApiDodleMe {
   constructor(private httpClient: HttpClient) {
   }
 
-  public recupererListe() : Observable<Evenement[]>{
+  public getAllEvents() : Observable<Evenement[]>{
     return this.httpClient.get<Evenement[]>(this.url + "/events");
+  }
+
+  public getEventsCrees(user: User) : Observable<Evenement[]>{
+      return this.httpClient.get<Evenement[]>(this.url + "/events/" + user.username)
   }
 
   public ajouterEvent(event: Evenement) {

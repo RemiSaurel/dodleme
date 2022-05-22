@@ -13,6 +13,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersAdminComponent } from './users-admin/users-admin.component';
+import { EventsCreesComponent } from './user-profile/events-crees/events-crees.component';
+import { EventsParticipesComponent } from './user-profile/events-participes/events-participes.component';
+import { CardEventComponent } from './card-event/card-event.component';
 
 const appRoutes: Routes = [
   // 1 route par module
@@ -32,7 +35,10 @@ const appRoutes: Routes = [
     ListerEvenementsComponent,
     UserLoginComponent,
     UserProfileComponent,
-    UsersAdminComponent
+    UsersAdminComponent,
+    EventsCreesComponent,
+    EventsParticipesComponent,
+    CardEventComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,10 @@
 <div>Username : {{this.user.username}}</div>
 <div>Nom : {{this.user.nom}}</div>
 <div>Prenom : {{this.user.prenom}}</div>
+<button class="btn btn-success m-2" (click)="eventcrees = true">Events créés</button>
+<button class="btn btn-success m-2" (click)="eventcrees = false">Events participés</button>
+
 <hr>
+<app-events-crees *ngIf="eventcrees" [evenements]="evenements_crees"></app-events-crees>
+<app-events-participes *ngIf="!eventcrees" [evenements]="evenements_participes"></app-events-participes>
+

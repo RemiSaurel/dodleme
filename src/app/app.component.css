@@ -37,3 +37,7 @@
 #titre_header {
   cursor: pointer;
 }
+
+.button_header{
+  margin-right: 12px;
+}

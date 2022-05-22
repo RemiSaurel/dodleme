@@ -1,8 +1,8 @@
 <header class="h4 m-3" id="header">
   <div routerLink="/" id="titre_header">DodleMe</div>
-  <div class="buttons_header flex-row align-items-end">
-    <button type="button" class="btn btn-dark" routerLink="users" *ngIf="isLogged" (click)="getAllUsers()">Utilisateurs</button>
-    <button type="button" class="btn btn-dark" routerLink="profile" *ngIf="isLogged">Mon profil</button>
+  <div class="flex-row align-items-end">
+    <button type="button" class="btn btn-dark button_header" routerLink="users" *ngIf="isLogged" (click)="getAllUsers()">👀</button>
+    <button type="button" class="btn btn-dark button_header"  routerLink="profile" *ngIf="isLogged">Profil</button>
   </div>
 </header>
 <hr>
@@ -19,7 +19,7 @@
           <span>rendez-vous.</span>
         </div>
         <div>
-          <button type="button" class="btn btn-dark" id="create_dodle" routerLink="create" *ngIf="isLogged">Créer un DodleMe</button>
+          <button type="button" class="btn btn-outline-dark" id="create_dodle" routerLink="create" *ngIf="isLogged">Créer un DodleMe</button>
         </div>
         <div>
           <button type="button" class="btn btn-dark" routerLink="events" *ngIf="isLogged">Voir tous les événements</button>

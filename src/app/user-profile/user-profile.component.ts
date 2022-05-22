@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../User";
 import {AppComponent} from "../app.component";
 import {ApiDodleMe} from "../api-dodleme";
+import {Evenement} from "../Evenement";
 
 @Component({
   selector: 'app-user-profile',
@@ -10,12 +11,23 @@ import {ApiDodleMe} from "../api-dodleme";
 })
 export class UserProfileComponent implements OnInit {
   user: User;
+  eventcrees: boolean = true;
+  evenements_crees: Evenement[];
+  evenements_participes: Evenement[];
+
 
   constructor(private appComponent: AppComponent,
               private apiDodleMe: ApiDodleMe) { }
 
   ngOnInit(): void {
     this.user = this.appComponent.getUser();
-  }
+    if (this.user.username !== undefined) {
+      this.apiDodleMe.getEventsCrees(this.user).subscribe(evenements => {
+        console.log(evenements)
+        this.evenements_crees = evenements;
+      });
 
+    }
+
+  }
 }

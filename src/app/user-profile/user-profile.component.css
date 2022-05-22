@@ -1,0 +1,16 @@
+.card_event {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 16px;
+}
+
+.card_infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.first_row {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
