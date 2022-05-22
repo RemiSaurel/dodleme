@@ -1,0 +1,14 @@
+.card_event {
+  display: flex;
+  border: 1px solid slategrey;
+  border-radius: 16px;
+}
+
+.card_infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_creneau {
+  z-index: 1000;
+}

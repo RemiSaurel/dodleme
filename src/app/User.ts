@@ -1,7 +1,7 @@
 export class User {
-  username : String;
-  nom : String;
-  prenom : String
+  username : string;
+  nom : string;
+  prenom : string
 
   public User() {
     this.username = "";

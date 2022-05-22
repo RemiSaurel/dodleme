@@ -4,6 +4,7 @@ import {ApiDodleMe} from "../api-dodleme";
 import {HttpClient} from "@angular/common/http";
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {Creneau} from "../Creneau";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-creer-evenement',
@@ -19,10 +20,12 @@ export class CreerEvenementComponent implements OnInit {
   evenement: Evenement;
 
   constructor(private apiDodleMe: ApiDodleMe,
-              private httpClient: HttpClient) { }
+              private httpClient: HttpClient,
+              private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.evenement = new Evenement();
+    this.evenement.createur = this.appComponent.user.username;
   }
 
   titreOK(): boolean {
