@@ -1,8 +1,12 @@
-<div>Username : {{this.user.username}}</div>
-<div>Nom : {{this.user.nom}}</div>
+<div class="d-flex justify-content-between align-items-baseline">
+  Username : {{this.user.username}}
+  <button class="btn btn-outline-secondary m-2" (click)="eventcrees = true">Events créés</button>
+</div>
+<div class="d-flex justify-content-between align-items-baseline">
+  Nom : {{this.user.nom}}
+  <button class="btn btn-outline-secondary m-2" (click)="eventcrees = false">Events participés</button>
+</div>
 <div>Prenom : {{this.user.prenom}}</div>
-<button class="btn btn-success m-2" (click)="eventcrees = true">Events créés</button>
-<button class="btn btn-success m-2" (click)="eventcrees = false">Events participés</button>
 
 <hr>
 <app-events-crees *ngIf="eventcrees" [evenements]="evenements_crees"></app-events-crees>
