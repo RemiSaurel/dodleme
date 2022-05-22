@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ApiDodleMe} from "./api-dodleme";
 import {User} from "./User";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,10 @@ export class AppComponent {
       this.isLogged = false;
       return false;
     }
+  }
+
+  getAllUsers() : Observable<User[]> {
+    return this.apiDodleMe.getAllUsers()
   }
 
   connexion(user: User) : boolean {

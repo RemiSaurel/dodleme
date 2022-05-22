@@ -1,6 +1,9 @@
 <header class="h4 m-3" id="header">
   <div routerLink="/" id="titre_header">DodleMe</div>
-  <button type="button" class="btn btn-dark" routerLink="profile" *ngIf="isLogged">Mon profil</button>
+  <div class="buttons_header flex-row align-items-end">
+    <button type="button" class="btn btn-dark" routerLink="users" *ngIf="isLogged" (click)="getAllUsers()">Utilisateurs</button>
+    <button type="button" class="btn btn-dark" routerLink="profile" *ngIf="isLogged">Mon profil</button>
+  </div>
 </header>
 <hr>
 <div class="container">

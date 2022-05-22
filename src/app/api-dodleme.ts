@@ -35,4 +35,17 @@ export class ApiDodleMe {
   public inscriptionUtilisateur(user: User) : Observable<User> {
     return this.httpClient.post<User>(this.url + "/users", user);
   }
+
+  public getAllUsers() : Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url + "/users")
+  }
+
+  public clearAllUsers() {
+    this.httpClient.delete(this.url + "/users")
+      .subscribe(data => console.log(data));
+  }
+
+  public clearUser(user: User) : Observable<User[]>{
+    return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
+  }
 }

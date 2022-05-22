@@ -12,6 +12,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UsersAdminComponent } from './users-admin/users-admin.component';
 
 const appRoutes: Routes = [
   // 1 route par module
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   {path: 'events', component: ListerEvenementsComponent},
   {path: 'login', component: UserLoginComponent },
   {path: 'profile', component: UserProfileComponent },
+  {path: 'users', component: UsersAdminComponent },
   // Spécifie le chemin d'erreur et le chemin par défaut
   {path: '**', redirectTo:"/login" ,pathMatch:'full' }
 ];
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     CreerEvenementComponent,
     ListerEvenementsComponent,
     UserLoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UsersAdminComponent
   ],
   imports: [
     BrowserModule,

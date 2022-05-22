@@ -1,0 +1,22 @@
+<button class="btn btn-danger" (click)="clearAllUsers()">Supprimer tous les users</button>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="col">#</th>
+    <th class="col">Username</th>
+    <th class="col">Nom</th>
+    <th class="col">Prénom</th>
+    <th class="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of this.users; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td><button class="btn btn-danger" (click)="clearUser(user)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
