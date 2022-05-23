@@ -61,4 +61,14 @@ export class ApiDodleMe {
   public clearUser(user: User) : Observable<User[]>{
     return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
   }
+
+  public addUserToEvent(body: { idCreneau: string; username: string; aAjouter:boolean }) {
+    if (body.aAjouter) {
+      this.httpClient.patch(this.url + "/event/creneau/addUser", body)
+        .subscribe(data => console.log(data));
+    } else {
+      this.httpClient.patch(this.url + "/event/creneau/removeUser", body)
+        .subscribe(data => console.log(data));
+    }
+  }
 }

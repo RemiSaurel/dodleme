@@ -14,7 +14,7 @@
       Heure début : {{ creneau.heure_debut }} <br>
       Date fin : {{ creneau.date_fin }} <br>
       Heure fin : {{ creneau.heure_fin }} <br>
-      <button class="btn btn-success m-2" (click)="getCreneau(creneau)">👍</button>
-      <button class="btn btn-danger"(click)="getCreneau(creneau)" >👎</button>
+      <button class="btn btn-success m-2" (click)="addUserToEvent(creneau,true)">👍</button>
+      <button class="btn btn-danger"(click)="addUserToEvent(creneau,false)" >👎</button>
     </div>
   </div>

@@ -6,5 +6,4 @@ export class Evenement {
   description: string;
   creneaux: Creneau[] = [];
   createur: string;
-  participants: [string];
 }

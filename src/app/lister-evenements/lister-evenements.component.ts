@@ -42,4 +42,9 @@ export class ListerEvenementsComponent implements OnInit {
       }
     });
   }
+
+  addUserToEvent(creneau : Creneau, aAjouter : boolean) {
+    const body = {username:this.username,idCreneau:creneau._id, aAjouter:aAjouter};
+    this.apiDodleMe.addUserToEvent(body);
+  }
 }
