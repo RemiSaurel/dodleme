@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Evenement} from "./Evenement";
 import {User} from "./User";
+import {Creneau} from "./Creneau";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,15 @@ export class ApiDodleMe {
   }
 
   public getEventsCrees(user: User) : Observable<Evenement[]>{
-      return this.httpClient.get<Evenement[]>(this.url + "/events/" + user.username)
+    return this.httpClient.get<Evenement[]>(this.url + "/events/" + user.username)
+  }
+
+  public getInfoEvent(event: Evenement) : Observable<Evenement> {
+    return this.httpClient.get<Evenement>(this.url + "/event/" + event._id)
+  }
+
+  public getInfoCreneau(creneau: Creneau) : Observable<Creneau> {
+    return this.httpClient.get<Creneau>(this.url + "/creneau/" + creneau._id)
   }
 
   public ajouterEvent(event: Evenement) {

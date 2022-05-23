@@ -34,7 +34,8 @@ export class CreerEvenementComponent implements OnInit {
   }
 
   creneauOK(creneau: Creneau) : boolean {
-    return Object.keys(creneau).length === Creneau.NB_PROPRIETES_CRENEAU;
+    console.log(Object.keys(creneau).length)
+    return Object.keys(creneau).length === Creneau.NB_PROPRIETES_OBLIGATOIRES_CRENEAU;
   }
 
   creneauxOK(creneaux: Creneau[]): boolean {
@@ -51,6 +52,7 @@ export class CreerEvenementComponent implements OnInit {
   }
 
   eventOk(): boolean {
+    console.log(this.evenement.creneaux)
     return this.titreOK() && this.creneauxOK(this.evenement.creneaux);
   }
 
