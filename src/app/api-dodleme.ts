@@ -62,13 +62,12 @@ export class ApiDodleMe {
     return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
   }
 
-  public addUserToEvent(body: { idCreneau: string; username: string; aAjouter:boolean }) {
-    if (body.aAjouter) {
-      this.httpClient.patch(this.url + "/event/creneau/addUser", body)
-        .subscribe(data => console.log(data));
-    } else {
-      this.httpClient.patch(this.url + "/event/creneau/removeUser", body)
-        .subscribe(data => console.log(data));
+  public addUserToEvent(idEvent: string, idCreneau: string, username: string, estOK:boolean) : Observable<Evenement[]>{
+    const body = {
+      username: username,
+      estOK: estOK
     }
+
+    return this.httpClient.patch<Evenement[]>(this.url + "/events/" + idEvent + "/creneaux/" + idCreneau, body);
   }
 }

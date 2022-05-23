@@ -14,7 +14,17 @@
       Heure début : {{ creneau.heure_debut }} <br>
       Date fin : {{ creneau.date_fin }} <br>
       Heure fin : {{ creneau.heure_fin }} <br>
-      <button class="btn btn-success m-2" (click)="addUserToEvent(creneau,true)">👍</button>
-      <button class="btn btn-danger"(click)="addUserToEvent(creneau,false)" >👎</button>
+      <button class="btn btn-success m-2" (click)="addUserToEvent(event, creneau,true)">👍</button>
+      <button class="btn btn-danger"(click)="addUserToEvent(event, creneau,false)" >👎</button>
+      <br>
+      Participants OK:
+      <div *ngFor="let participant_ok of creneau.participants.participants_OK;">
+        {{participant_ok}}
+      </div>
+      <hr>
+      Participants NOT OK:
+      <div *ngFor="let participant_not_ok of creneau.participants.participants_NOT_OK">
+        {{participant_not_ok}}
+      </div>
     </div>
   </div>

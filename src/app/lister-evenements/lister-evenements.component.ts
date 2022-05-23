@@ -43,8 +43,15 @@ export class ListerEvenementsComponent implements OnInit {
     });
   }
 
-  addUserToEvent(creneau : Creneau, aAjouter : boolean) {
-    const body = {username:this.username,idCreneau:creneau._id, aAjouter:aAjouter};
-    this.apiDodleMe.addUserToEvent(body);
+  addUserToEvent(event: Evenement, creneau : Creneau, estOK : boolean) {
+    // Si estOK pour ce créneau ET pas présent dans participants_OK
+    // OU
+    // Si pasOK pour ce créneau ET pas présent dans participants_NOT_OK
+    if (estOK && Object.values(creneau.participants.participants_OK).indexOf(this.username) == -1
+      || !estOK && Object.values(creneau.participants.participants_NOT_OK).indexOf(this.username) == -1) {
+      this.apiDodleMe.addUserToEvent(event._id, creneau._id, this.username, estOK).subscribe(data => {
+          this.evenements = data;
+      })
+    }
   }
 }
