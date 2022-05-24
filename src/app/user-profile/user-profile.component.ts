@@ -26,7 +26,10 @@ export class UserProfileComponent implements OnInit {
         console.log(evenements)
         this.evenements_crees = evenements;
       });
-
+      this.apiDodleMe.getEventsParticipes(this.user).subscribe(evenements => {
+        console.log(evenements)
+        this.evenements_participes = evenements;
+      });
     }
 
   }

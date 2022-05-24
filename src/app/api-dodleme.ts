@@ -23,6 +23,10 @@ export class ApiDodleMe {
     return this.httpClient.get<Evenement[]>(this.url + "/events/" + user.username)
   }
 
+  public getEventsParticipes(user: User) : Observable<Evenement[]>{
+    return this.httpClient.get<Evenement[]>(this.url + "/eventsParticipate/" + user.username)
+  }
+
   public getInfoEvent(event: Evenement) : Observable<Evenement> {
     return this.httpClient.get<Evenement>(this.url + "/event/" + event._id)
   }
