@@ -3,6 +3,7 @@
     <div class="card_infos">
       <div class="first_row"> N°{{ i + 1}}
         <div *ngIf="username == event.createur"><button class="btn btn-outline-primary" (click)="getInfoEvent(event)">Définir</button></div>
+        <div *ngIf="username == event.createur"><button class="btn btn-danger" (click)="clearEvent(event)">Supprimer l'évènement</button></div>
       </div>
       <div> Titre : {{ event.titre}} </div>
       <div> Description : {{ event.description}} </div>

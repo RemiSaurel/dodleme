@@ -57,13 +57,13 @@ export class ApiDodleMe {
     return this.httpClient.get<User[]>(this.url + "/users")
   }
 
+  public clearUser(user: User) : Observable<User[]>{
+    return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
+  }
+
   public clearAllUsers() {
     this.httpClient.delete(this.url + "/users")
       .subscribe(data => console.log(data));
-  }
-
-  public clearUser(user: User) : Observable<User[]>{
-    return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
   }
 
   public addUserToEvent(idEvent: string, idCreneau: string, username: string, estOK:boolean) : Observable<Evenement[]>{
@@ -73,5 +73,9 @@ export class ApiDodleMe {
     }
 
     return this.httpClient.patch<Evenement[]>(this.url + "/events/" + idEvent + "/creneaux/" + idCreneau, body);
+  }
+
+  public clearEvent(event : Evenement) {
+    return this.httpClient.delete(this.url + "/event/"+ event._id);
   }
 }

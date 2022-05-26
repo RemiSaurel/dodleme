@@ -50,8 +50,14 @@ export class ListerEvenementsComponent implements OnInit {
     if (estOK && Object.values(creneau.participants.participants_OK).indexOf(this.username) == -1
       || !estOK && Object.values(creneau.participants.participants_NOT_OK).indexOf(this.username) == -1) {
       this.apiDodleMe.addUserToEvent(event._id, creneau._id, this.username, estOK).subscribe(data => {
-          this.evenements = data;
+        this.evenements = data;
       })
     }
+  }
+
+  clearEvent(event: Evenement) {
+    this.apiDodleMe.clearEvent(event).subscribe();
+    const index = this.evenements.map(function(e) {return e._id}).indexOf(event._id);
+    this.evenements.splice(index,1);
   }
 }
