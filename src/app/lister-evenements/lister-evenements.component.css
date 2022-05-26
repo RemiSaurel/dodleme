@@ -16,3 +16,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.position-fixed {
+  position: fixed!important;
+  top: 40px; right: 40px;
+}

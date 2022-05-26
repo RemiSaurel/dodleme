@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Evenement} from "../Evenement";
 import {ApiDodleMe} from "../api-dodleme";
 import {Router} from "@angular/router";
 import {AppComponent} from "../app.component";
 import {Creneau} from "../Creneau";
+import {NgbActiveModal, NgbModal, NgbAlert} from '@ng-bootstrap/ng-bootstrap';
+import { Subject} from "rxjs";
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-lister-evenements',
@@ -11,12 +14,20 @@ import {Creneau} from "../Creneau";
   styleUrls: ['./lister-evenements.component.css']
 })
 export class ListerEvenementsComponent implements OnInit {
-  evenements: Evenement[];
+  public evenements: Evenement[];
   username: string = this.appComponent.user.username;
+
+  notification = '';
+  typeNotif = '';
+
+  private _success = new Subject<string>();
+  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
+
 
   constructor(private apiDodleMe: ApiDodleMe,
               private router: Router,
-              private appComponent: AppComponent ) { }
+              private appComponent: AppComponent,
+              private modalService: NgbModal) { }
 
   clearAllEvents() {
     this.apiDodleMe.clearAllEvents();
@@ -41,6 +52,13 @@ export class ListerEvenementsComponent implements OnInit {
         this.evenements = data;
       }
     });
+
+    this._success.subscribe(message => this.notification = message);
+    this._success.pipe(debounceTime(3000)).subscribe(() => {
+      if (this.selfClosingAlert) {
+        this.selfClosingAlert.close();
+      }
+    });
   }
 
   addUserToEvent(event: Evenement, creneau : Creneau, estOK : boolean) {
@@ -53,6 +71,15 @@ export class ListerEvenementsComponent implements OnInit {
         this.evenements = data;
       })
     }
+
+    if (estOK) {
+      this.typeNotif = "success";
+      this.notification = "Vous participez à l'évènement \"" + event.titre + "\" !";
+    } else if (!estOK) {
+      this.typeNotif = "warning";
+      this.notification = "Vous ne participez plus à l'évènement \"" + event.titre + "\".";
+    }
+    this.afficherNotif();
   }
 
   clearEvent(event: Evenement) {
@@ -60,4 +87,22 @@ export class ListerEvenementsComponent implements OnInit {
     const index = this.evenements.map(function(e) {return e._id}).indexOf(event._id);
     this.evenements.splice(index,1);
   }
+
+  open(creneau : Creneau) {
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.creneau = creneau;
+  }
+
+  afficherNotif() { this._success.next(this.notification) }
+}
+
+
+@Component({
+  selector: 'ngbd-modal-content',
+  templateUrl: './lister-participants-creneau.html'
+})
+
+export class NgbdModalContent {
+  creneau : Creneau;
+  constructor(public activeModal: NgbActiveModal) {}
 }

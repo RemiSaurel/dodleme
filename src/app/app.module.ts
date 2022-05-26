@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CreerEvenementComponent } from './creer-evenement/creer-evenement.component';
-import { ListerEvenementsComponent } from './lister-evenements/lister-evenements.component';
+import {ListerEvenementsComponent, NgbdModalContent} from './lister-evenements/lister-evenements.component';
 import {FormsModule} from "@angular/forms";
 import {ApiDodleMe} from "./api-dodleme";
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +16,7 @@ import { UsersAdminComponent } from './users-admin/users-admin.component';
 import { EventsCreesComponent } from './user-profile/events-crees/events-crees.component';
 import { EventsParticipesComponent } from './user-profile/events-participes/events-participes.component';
 import { CardEventComponent } from './card-event/card-event.component';
+import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
 
 const appRoutes: Routes = [
   // 1 route par module
@@ -38,14 +39,16 @@ const appRoutes: Routes = [
     UsersAdminComponent,
     EventsCreesComponent,
     EventsParticipesComponent,
-    CardEventComponent
+    CardEventComponent,
+    NgbdModalContent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbAlertModule
   ],
   providers: [ApiDodleMe],
   bootstrap: [AppComponent]
