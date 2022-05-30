@@ -25,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'login', component: UserLoginComponent },
   {path: 'profile', component: UserProfileComponent },
   {path: 'users', component: UsersAdminComponent },
+
   // Spécifie le chemin d'erreur et le chemin par défaut
   {path: '**', redirectTo:"/login" ,pathMatch:'full' }
 ];

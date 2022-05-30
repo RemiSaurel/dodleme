@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit {
   evenements_crees: Evenement[];
   evenements_participes: Evenement[];
 
-
   constructor(private appComponent: AppComponent,
               private apiDodleMe: ApiDodleMe) { }
 
@@ -23,11 +22,9 @@ export class UserProfileComponent implements OnInit {
     this.user = this.appComponent.getUser();
     if (this.user.username !== undefined) {
       this.apiDodleMe.getEventsCrees(this.user).subscribe(evenements => {
-        console.log(evenements)
         this.evenements_crees = evenements;
       });
       this.apiDodleMe.getEventsParticipes(this.user).subscribe(evenements => {
-        console.log(evenements)
         this.evenements_participes = evenements;
       });
     }

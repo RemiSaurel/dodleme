@@ -34,7 +34,6 @@ export class CreerEvenementComponent implements OnInit {
   }
 
   creneauOK(creneau: Creneau) : boolean {
-    console.log(Object.keys(creneau).length)
     return Object.keys(creneau).length === Creneau.NB_PROPRIETES_OBLIGATOIRES_CRENEAU;
   }
 
@@ -52,7 +51,6 @@ export class CreerEvenementComponent implements OnInit {
   }
 
   eventOk(): boolean {
-    console.log(this.evenement.creneaux)
     return this.titreOK() && this.creneauxOK(this.evenement.creneaux);
   }
 
@@ -65,7 +63,6 @@ export class CreerEvenementComponent implements OnInit {
   valider(){
     if (this.eventOk()) {
       this.apiDodleMe.ajouterEvent(this.evenement)
-      console.log(this.evenement)
       this.clearInputs();
       document.getElementById("error_form")?.classList.add("d-none");
       document.getElementById("event_ok")?.classList.remove("d-none");

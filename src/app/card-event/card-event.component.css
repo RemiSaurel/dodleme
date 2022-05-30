@@ -9,6 +9,7 @@
 .card_infos {
   display: flex;
   flex-direction: column;
+  margin-top: 12px;
 }
 
 .first_row {

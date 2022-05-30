@@ -20,15 +20,11 @@ export class ApiDodleMe {
   }
 
   public getEventsCrees(user: User) : Observable<Evenement[]>{
-    return this.httpClient.get<Evenement[]>(this.url + "/events/" + user.username)
+    return this.httpClient.get<Evenement[]>(this.url + "/events/created/" + user.username)
   }
 
   public getEventsParticipes(user: User) : Observable<Evenement[]>{
-    return this.httpClient.get<Evenement[]>(this.url + "/eventsParticipate/" + user.username)
-  }
-
-  public getInfoEvent(event: Evenement) : Observable<Evenement> {
-    return this.httpClient.get<Evenement>(this.url + "/event/" + event._id)
+    return this.httpClient.get<Evenement[]>(this.url + "/events/participated/" + user.username)
   }
 
   public getInfoCreneau(creneau: Creneau) : Observable<Creneau> {
@@ -40,9 +36,12 @@ export class ApiDodleMe {
       .subscribe(data => console.log(data));
   }
 
-  public clearAllEvents() {
-    this.httpClient.delete(this.url + "/events")
-      .subscribe(data => console.log(data));
+  public definirCreneauFinal(creneau: Creneau, event: Evenement) : Observable<Evenement[]> {
+    return this.httpClient.patch<Evenement[]>(this.url + "/events/" + event._id + "/creneaufinal/", creneau)
+  }
+
+  public clearAllEvents() : Observable<Evenement[]> {
+    return this.httpClient.delete<Evenement[]>(this.url + "/events");
   }
 
   public connexionUtilisateur(user: User) : Observable<User>{
@@ -61,9 +60,8 @@ export class ApiDodleMe {
     return this.httpClient.delete<User[]>(this.url + "/users/" + user.username);
   }
 
-  public clearAllUsers() {
-    this.httpClient.delete(this.url + "/users")
-      .subscribe(data => console.log(data));
+  public clearAllUsers() : Observable<User[]> {
+    return this.httpClient.delete<User[]>(this.url + "/users");
   }
 
   public addUserToEvent(idEvent: string, idCreneau: string, username: string, estOK:boolean) : Observable<Evenement[]>{
@@ -75,7 +73,7 @@ export class ApiDodleMe {
     return this.httpClient.patch<Evenement[]>(this.url + "/events/" + idEvent + "/creneaux/" + idCreneau, body);
   }
 
-  public clearEvent(event : Evenement) {
-    return this.httpClient.delete(this.url + "/event/"+ event._id);
+  public clearEvent(event : Evenement) : Observable<Evenement[]>{
+    return this.httpClient.delete<Evenement[]>(this.url + "/event/"+ event._id);
   }
 }

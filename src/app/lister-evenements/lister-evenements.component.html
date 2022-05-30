@@ -1,25 +1,79 @@
 <ngb-alert class="position-fixed" #selfClosingAlert *ngIf="notification" type= "{{ typeNotif }}"  (closed)= "notification = ''"> {{ notification }}</ngb-alert>
-<button class="btn btn-danger w-25 " (click)="clearAllEvents()">Supprimer tous les events</button>
-<div class="card_event row mb-3 mt-3" *ngFor="let event of this.evenements; index as i">
-    <div class="card_infos">
-      <div class="first_row"> N°{{ i + 1}}
-        <div *ngIf="username == event.createur"><button class="btn btn-outline-primary" (click)="getInfoEvent(event)">Définir</button></div>
-        <div *ngIf="username == event.createur"><button class="btn btn-danger" (click)="clearEvent(event)">Supprimer l'évènement</button></div>
-      </div>
-      <div> Titre : {{ event.titre}} </div>
-      <div> Description : {{ event.description}} </div>
-      <div> Créateur : {{ event.createur}} </div>
-    </div>
-    <hr>
 
-    <div class="card_creneaux col-6 pb-3 text-center" *ngFor="let creneau of event.creneaux">
-      Date début : {{ creneau.date_debut }} <br>
-      Heure début : {{ creneau.heure_debut }} <br>
-      Date fin : {{ creneau.date_fin }} <br>
-      Heure fin : {{ creneau.heure_fin }} <br>
-      <button class="btn btn-success m-2" (click)="addUserToEvent(event, creneau,true)">👍</button>
-      <button class="btn btn-danger"(click)="addUserToEvent(event, creneau,false)" >👎</button>
-      <br>
-      <button class="btn btn-lg btn-outline-primary" (click)="open(creneau)">Voir les participants</button>
+<div class="buttons">
+  <button class="btn btn-success w-25" (click)="listerEventClosed = false">Voir tous les événements</button>
+  <button class="btn btn-dark w-25" (click)="listerEventClosed = true">Voir les événements archivés</button>
+</div>
+
+<div *ngIf="this.evenements !== undefined && this.evenements.length === 0">
+  <div class="h4 mt-5">
+    Pas d'événements 😞 !
+  </div>
+</div>
+<div *ngIf="this.listerEventClosed == false">
+  <div class="card_event row mb-3 mt-3" *ngFor="let event of this.evenements; index as i">
+    <div *ngIf="this.event.isClosed == false">
+      <div class="card_infos">
+        <div class="first_row"> N°{{ i + 1}}
+          <div *ngIf="username == event.createur"><button class="btn btn-danger" (click)="clearEvent(event)">Supprimer l'évènement</button></div>
+        </div>
+        <div> Titre : {{ event.titre}} </div>
+        <div> Description : {{ event.description}} </div>
+        <div> Créateur : {{ event.createur}} </div>
+      </div>
+      <hr>
+
+      <div class="card_creneaux col-6 pb-3 text-center" *ngFor="let creneau of event.creneaux">
+        Date début : {{ creneau.date_debut }} <br>
+        Heure début : {{ creneau.heure_debut }} <br>
+        Date fin : {{ creneau.date_fin }} <br>
+        Heure fin : {{ creneau.heure_fin }} <br>
+
+        {{creneau.participants.participants_OK.length}}
+        <button class="btn btn-success m-2" (click)="addUserToEvent(event, creneau,true)">
+          👍
+        </button>
+        <button class="btn btn-danger"(click)="addUserToEvent(event, creneau,false)" >
+          👎
+        </button>
+        {{creneau.participants.participants_NOT_OK.length}}
+
+        <br>
+        <div>
+          <button class="btn btn-outline-primary" (click)="open(creneau)">Voir les participants</button>
+        </div>
+        <div class="mt-2">
+          <div *ngIf="username == event.createur"><button class="btn btn-outline-dark" (click)="definirCreneauFinal(creneau, event)">Définir créneau final</button></div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="this.listerEventClosed == true">
+  <div class="card_event row mb-3 mt-3" *ngFor="let event of this.evenements; index as i">
+    <div *ngIf="this.event.isClosed == true">
+      <div class="card_infos">
+        <div class="first_row"> N°{{ i + 1}}
+          <div *ngIf="username == event.createur"><button class="btn btn-danger" (click)="clearEvent(event)">Supprimer l'évènement</button></div>
+        </div>
+        <div> Titre : {{ event.titre}} </div>
+        <div> Description : {{ event.description}} </div>
+        <div> Créateur : {{ event.createur}} </div>
+      </div>
+      <hr>
+
+      <div class="card_creneaux col-12 pb-3 text-center">
+        Date début : {{ event.creneauFinal.date_debut }} <br>
+        Heure début : {{ event.creneauFinal.heure_debut }} <br>
+        Date fin : {{ event.creneauFinal.date_fin }} <br>
+        Heure fin : {{ event.creneauFinal.heure_fin }} <br>
+        <br>
+        <div class="flex-row">
+          <button class="btn btn-outline-primary" (click)="open(event.creneauFinal)">Voir les participants</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

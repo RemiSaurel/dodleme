@@ -20,24 +20,24 @@ export class ListerEvenementsComponent implements OnInit {
   notification = '';
   typeNotif = '';
 
+  listerEventClosed = false;
+
   private _success = new Subject<string>();
   @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
-
 
   constructor(private apiDodleMe: ApiDodleMe,
               private router: Router,
               private appComponent: AppComponent,
               private modalService: NgbModal) { }
 
-  clearAllEvents() {
-    this.apiDodleMe.clearAllEvents();
-    this.evenements = [];
-  }
 
-  getInfoEvent(event: Evenement) {
-    this.apiDodleMe.getInfoEvent(event).subscribe(evenement => {
-      console.log(evenement)
-    });
+  definirCreneauFinal(creneau: Creneau, event: Evenement) {
+    this.apiDodleMe.definirCreneauFinal(creneau, event).subscribe(data => {
+      this.evenements = data;
+    })
+    this.typeNotif = "success";
+    this.notification = "Événement clos, youhou ! 🎉"
+    this.afficherNotif();
   }
 
   getCreneau(creneau: Creneau) {
@@ -74,18 +74,17 @@ export class ListerEvenementsComponent implements OnInit {
 
     if (estOK) {
       this.typeNotif = "success";
-      this.notification = "Vous participez à l'évènement \"" + event.titre + "\" !";
     } else if (!estOK) {
       this.typeNotif = "warning";
-      this.notification = "Vous ne participez plus à l'évènement \"" + event.titre + "\".";
     }
+    this.notification = "Votre réponse a été prise en compte."
     this.afficherNotif();
   }
 
   clearEvent(event: Evenement) {
-    this.apiDodleMe.clearEvent(event).subscribe();
-    const index = this.evenements.map(function(e) {return e._id}).indexOf(event._id);
-    this.evenements.splice(index,1);
+    this.apiDodleMe.clearEvent(event).subscribe( data => {
+      this.evenements = data;
+    })
   }
 
   open(creneau : Creneau) {
