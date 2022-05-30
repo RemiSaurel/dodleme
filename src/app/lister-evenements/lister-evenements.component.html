@@ -22,28 +22,30 @@
         <div> Créateur : {{ event.createur}} </div>
       </div>
       <hr>
+      <div class="row">
 
-      <div class="card_creneaux col-6 pb-3 text-center" *ngFor="let creneau of event.creneaux">
-        Date début : {{ creneau.date_debut }} <br>
-        Heure début : {{ creneau.heure_debut }} <br>
-        Date fin : {{ creneau.date_fin }} <br>
-        Heure fin : {{ creneau.heure_fin }} <br>
+        <div class="col-6 pb-3 text-center" *ngFor="let creneau of event.creneaux">
+          Date début : {{ creneau.date_debut }} <br>
+          Heure début : {{ creneau.heure_debut }} <br>
+          Date fin : {{ creneau.date_fin }} <br>
+          Heure fin : {{ creneau.heure_fin }} <br>
 
-        {{creneau.participants.participants_OK.length}}
-        <button class="btn btn-success m-2" (click)="addUserToEvent(event, creneau,true)">
-          👍
-        </button>
-        <button class="btn btn-danger"(click)="addUserToEvent(event, creneau,false)" >
-          👎
-        </button>
-        {{creneau.participants.participants_NOT_OK.length}}
+          {{creneau.participants.participants_OK.length}}
+          <button class="btn btn-success m-2" (click)="addUserToEvent(event, creneau,true)">
+            👍
+          </button>
+          <button class="btn btn-danger"(click)="addUserToEvent(event, creneau,false)" >
+            👎
+          </button>
+          {{creneau.participants.participants_NOT_OK.length}}
 
-        <br>
-        <div>
-          <button class="btn btn-outline-primary" (click)="open(creneau)">Voir les participants</button>
-        </div>
-        <div class="mt-2">
-          <div *ngIf="username == event.createur"><button class="btn btn-outline-dark" (click)="definirCreneauFinal(creneau, event)">Définir créneau final</button></div>
+          <br>
+          <div>
+            <button class="btn btn-outline-primary" (click)="open(creneau)">Voir les participants</button>
+          </div>
+          <div class="mt-2">
+            <div *ngIf="username == event.createur"><button class="btn btn-outline-dark" (click)="definirCreneauFinal(creneau, event)">Définir créneau final</button></div>
+          </div>
         </div>
       </div>
     </div>
