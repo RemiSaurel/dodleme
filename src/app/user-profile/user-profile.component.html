@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-baseline">
+  Username : {{this.user.username}}
+  <button class="btn btn-outline-secondary m-2" (click)="eventcrees = true">Events créés</button>
+</div>
+<div class="d-flex justify-content-between align-items-baseline">
+  Nom : {{this.user.nom}}
+  <button class="btn btn-outline-secondary m-2" (click)="eventcrees = false">Events participés</button>
+</div>
+<div>Prenom : {{this.user.prenom}}</div>
+
+<hr>
+<app-events-crees *ngIf="eventcrees" [evenements]="evenements_crees"></app-events-crees>
+<app-events-participes *ngIf="!eventcrees" [evenements]="evenements_participes"></app-events-participes>
+

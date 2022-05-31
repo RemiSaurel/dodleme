@@ -1,0 +1,53 @@
+<div class="mb-5">
+  <button class="btn btn-danger mb-2" (click)="clearAllEvents()">Supprimer tous les events</button>
+  <div class="h3">
+    📆 Events
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="col">#</th>
+      <th class="col">Titre</th>
+      <th class="col">Créateur</th>
+      <th class="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of this.events; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ event.titre }}</td>
+      <td>{{ event.createur }}</td>
+      <td><button class="btn btn-danger" (click)="clearEvent(event)">Supprimer</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<div class="mt-5">
+  <button class="btn btn-danger mb-2" (click)="clearAllUsers()">Supprimer tous les users</button>
+  <div class="h3">
+    👤 Users
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="col">#</th>
+      <th class="col">Username</th>
+      <th class="col">Nom</th>
+      <th class="col">Prénom</th>
+      <th class="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of this.users; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td><button class="btn btn-danger" (click)="clearUser(user)">Supprimer</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

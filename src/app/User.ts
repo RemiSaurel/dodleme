@@ -1,6 +1,12 @@
 export class User {
-  username : String;
-  prenom : String;
-  nom : String
-  password : String;
+  _id: string;
+  username : string;
+  nom : string;
+  prenom : string
+
+  public User() {
+    this.username = "";
+    this.nom = "";
+    this.prenom = "";
+  }
 }

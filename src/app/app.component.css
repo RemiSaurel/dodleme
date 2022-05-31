@@ -33,3 +33,11 @@
 #component {
   margin-top: 5vh;
 }
+
+#titre_header {
+  cursor: pointer;
+}
+
+.button_header{
+  margin-right: 12px;
+}

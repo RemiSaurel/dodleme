@@ -9,20 +9,11 @@
 .card_infos {
   display: flex;
   flex-direction: column;
+  margin-top: 12px;
 }
 
 .first_row {
   margin-top: 12px;
   display: flex;
   justify-content: space-between;
-}
-
-.position-fixed {
-  position: fixed!important;
-  top: 40px; right: 40px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-evenly;
 }
