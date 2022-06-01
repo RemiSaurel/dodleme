@@ -10,6 +10,7 @@ import {Evenement} from "../Evenement";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  // Permet de stocker le user, les events, créés et participés
   user: User;
   eventcrees: boolean = true;
   evenements_crees: Evenement[];
@@ -18,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private appComponent: AppComponent,
               private apiDodleMe: ApiDodleMe) { }
 
+  // Appels aux différentes ressources du back pour récupérer les informations nécessaires
   ngOnInit(): void {
     this.user = this.appComponent.getUser();
     if (this.user.username !== undefined) {

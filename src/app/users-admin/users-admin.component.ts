@@ -11,12 +11,14 @@ import {Evenement} from "../Evenement";
 })
 export class UsersAdminComponent implements OnInit {
 
+  // Liste des utilisateurs et des événements
   users: User[];
   events: Evenement[];
 
   constructor(private apiDodleMe: ApiDodleMe,
               private appComponent: AppComponent) { }
 
+  // Appel au back pour récupérer les informations
   ngOnInit(): void {
     this.appComponent.getAllUsers().subscribe(data => {
       this.users = data;
@@ -26,24 +28,28 @@ export class UsersAdminComponent implements OnInit {
     })
   }
 
+  // Supprimer tous les utilisateurs
   clearAllUsers() {
     this.apiDodleMe.clearAllUsers().subscribe(data => {
       this.users = data;
     });
   }
 
+  // Supprimer l'utilisateur passé en argument
   clearUser(user: User) {
     this.apiDodleMe.clearUser(user).subscribe(data => {
       this.users = data;
     })
   }
 
+  // Supprimer tous les événements
   clearAllEvents() {
     this.apiDodleMe.clearAllEvents().subscribe(data => {
       this.events = data;
     });
   }
 
+  // Supprimer l'événement passé en argument
   clearEvent(event: Evenement) {
     this.apiDodleMe.clearEvent(event).subscribe(data => {
       this.events = data;

@@ -17,9 +17,11 @@ export class ListerEvenementsComponent implements OnInit {
   public evenements: Evenement[];
   username: string = this.appComponent.user.username;
 
+  // Pour les notifications lors d'une action
   notification = '';
   typeNotif = '';
 
+  // Pour switch entre les events archivés et les classiques
   listerEventClosed = false;
 
   private _success = new Subject<string>();
@@ -31,21 +33,7 @@ export class ListerEvenementsComponent implements OnInit {
               private modalService: NgbModal) { }
 
 
-  definirCreneauFinal(creneau: Creneau, event: Evenement) {
-    this.apiDodleMe.definirCreneauFinal(creneau, event).subscribe(data => {
-      this.evenements = data;
-    })
-    this.typeNotif = "success";
-    this.notification = "Événement clos, youhou ! 🎉"
-    this.afficherNotif();
-  }
-
-  getCreneau(creneau: Creneau) {
-    this.apiDodleMe.getInfoCreneau(creneau).subscribe(creneau => {
-      console.log(creneau)
-    });
-  }
-
+  // Récupère tous les events depuis le back
   ngOnInit(): void {
     this.apiDodleMe.getAllEvents().subscribe((data) => {
       if (data) {
@@ -61,6 +49,24 @@ export class ListerEvenementsComponent implements OnInit {
     });
   }
 
+  // Click sur le bouton créneau final
+  definirCreneauFinal(creneau: Creneau, event: Evenement) {
+    this.apiDodleMe.definirCreneauFinal(creneau, event).subscribe(data => {
+      this.evenements = data;
+    })
+    this.typeNotif = "success";
+    this.notification = "Événement clos, youhou ! 🎉"
+    this.afficherNotif();
+  }
+
+  // Pour récupérer un info créneau, sert de DEBUG
+  getCreneau(creneau: Creneau) {
+    this.apiDodleMe.getInfoCreneau(creneau).subscribe(creneau => {
+      console.log(creneau)
+    });
+  }
+
+  // Permet d'ajouter un utilisateur à un event, en fonction de son choix
   addUserToEvent(event: Evenement, creneau : Creneau, estOK : boolean) {
     // Si estOK pour ce créneau ET pas présent dans participants_OK
     // OU
@@ -81,12 +87,14 @@ export class ListerEvenementsComponent implements OnInit {
     this.afficherNotif();
   }
 
+  // Permet de supprimer un événement
   clearEvent(event: Evenement) {
     this.apiDodleMe.clearEvent(event).subscribe( data => {
       this.evenements = data;
     })
   }
 
+  // Pour la modal
   open(creneau : Creneau) {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.creneau = creneau;

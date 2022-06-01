@@ -9,15 +9,21 @@ import {AppComponent} from "../app.component";
 })
 export class UserLoginComponent implements OnInit {
 
+  // Le user logged
   user: User;
 
+  // Cas d'erreurs
   erreurLogin: boolean = false;
   erreurSignUp: boolean = false;
 
+  // Pour switch entre inscription et connexion
   inscriptionForm: boolean = false;
 
   constructor(private appComponent: AppComponent) {
     this.user = new User()
+  }
+
+  ngOnInit(): void {
   }
 
   afficherInscription() {
@@ -28,9 +34,7 @@ export class UserLoginComponent implements OnInit {
     this.inscriptionForm = false;
   }
 
-  ngOnInit(): void {
-  }
-
+  // Connexion avec le back
   connection() {
     this.erreurSignUp = false;
     if (!this.appComponent.connexion(this.user)) {
@@ -38,6 +42,7 @@ export class UserLoginComponent implements OnInit {
     };
   }
 
+  // Inscription avec le back
   inscription() {
     this.erreurLogin = false;
     if (!this.appComponent.inscription(this.user)) {
